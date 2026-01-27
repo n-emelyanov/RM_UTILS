@@ -1,0 +1,38 @@
+# Исключения пользователя
+catboost_info/
+data/**/*.pqt
+data/**/*.parquet
+data/**/*.csv
+additional_analytics/*
+
+# Кеш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Распределения дистрибутивов
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Виртуальные окружения
+.virtualenv/
+.venv/
+venv/
+env/
+
+# Файлы окружения
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Кеш Poetry
+.python-version.DS_Store
+.DS_Store
