@@ -1,15 +1,17 @@
 [project]
 name = "rm-utils"
-version = "0.1.0"
+version = "1.0.1"
 description = ""
 authors = [
     {name = "n-emelianov",email = "limbolume2023@gmail.com"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
-    "pandas (>=3.0.0,<4.0.0)"
+    "pandas (>=3.0.0,<4.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "pillow (>=12.1.0,<13.0.0)"
 ]
 
 
@@ -20,5 +22,6 @@ build-backend = "poetry.core.masonry.api"
 [dependency-groups]
 dev = [
     "pre-commit (>=4.5.1,<5.0.0)",
-    "pytest (>=9.0.2,<10.0.0)"
+    "pytest (>=9.0.2,<10.0.0)",
+    "ipykernel (>=7.1.0,<8.0.0)"
 ]
