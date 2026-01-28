@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
-
 from openpyxl.drawing.image import Image
 from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
-from openpyxl.drawing.xdr import XDRPoint2D, XDRPositiveSize2D
+from openpyxl.drawing.xdr import XDRPositiveSize2D
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.utils.units import pixels_to_EMU, cm_to_EMU
 from openpyxl.styles import Font, Alignment, PatternFill
 from openpyxl.styles.borders import Border, Side
-from openpyxl.worksheet.cell_range import CellRange
 from openpyxl import Workbook
 from openpyxl.worksheet.worksheet import Worksheet
+
 import pandas as pd
 import numpy as np
 import os
@@ -42,7 +40,7 @@ class ExcelReporter:
         self.workbook.remove_sheet(self.workbook.get_sheet_by_name('Sheet'))
 
         # self._blue_fill = PatternFill(fill_type='solid', fgColor='2353D6') # GPB
-        self._blue_fill = PatternFill(fill_type='solid', fgColor='7000FF')
+        self._blue_fill = PatternFill(fill_type='solid', fgColor='7000FF') # UZUM
 
         self._dark_blue_fill = PatternFill(fill_type='solid', fgColor='113D70')
 
@@ -74,8 +72,8 @@ class ExcelReporter:
 
             # Добавляем лого GPB
             image_path = os.path.join(os.path.dirname(__file__), '..', 'assets', 'logo.png')
-            # self.add_image(image_path, sheet_name, row_offset=1.2, col_offset=1.059354, scale=0.7) #gpb
-            self.add_image(image_path, sheet_name, row_offset=1.2, col_offset=1.059354, scale=0.3) #uzum
+            # self.add_image(image_path, sheet_name, row_offset=1.2, col_offset=1.059354, scale=0.7) # GPB
+            self.add_image(image_path, sheet_name, row_offset=1.2, col_offset=1.059354, scale=0.3) # UZUM
 
             # Убираем стандартную сетку excel
             sheet.sheet_view.showGridLines = False
@@ -144,8 +142,8 @@ class ExcelReporter:
         sheet_name: str = 'Sheet',
         table_name: str = None,
         index: bool = False,
-        row_offset: int = 1,
-        col_offset: int = 1
+        row_offset: int = 5,
+        col_offset: int = 2
     ) -> None:
         """
         Добавляет датафрейм в файл Excel.
@@ -232,7 +230,7 @@ class ExcelReporter:
 
     def add_image(
         self,
-        image_path: str,
+        img_path: str,
         sheet_name: str = 'Sheet',
         row_offset: float = 1,
         col_offset: float = 1,
@@ -267,7 +265,7 @@ class ExcelReporter:
         # Форматируем лист (GPB style)
         sheet = self._prepare_sheet(sheet_name)
 
-        img = Image(image_path)
+        img = Image(img_path)
 
         h = img.height * scale
         w = img.width * scale
