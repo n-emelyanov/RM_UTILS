@@ -14,8 +14,8 @@ lint:  ## Проверить код (когда добавите линтеры)
 	poetry run flake8 src/ || echo "Установите flake8: poetry add flake8 --dev"
 	poetry run black --check src/ || echo "Установите black: poetry add black --dev"
 
-format:  ## Форматировать код
-	poetry run black src/
+# format:  ## Форматировать код
+# 	poetry run black src/
 
 # test:  ## Запустить тесты (когда добавите pytest)
 # 	poetry run pytest tests/ || echo "Установите pytest: poetry add pytest --dev"

@@ -1,6 +1,6 @@
 [project]
 name = "rm-utils"
-version = "1.0.1"
+version = "1.0.2"
 description = ""
 authors = [
     {name = "n-emelianov",email = "limbolume2023@gmail.com"}
@@ -18,7 +18,8 @@ dependencies = [
     "sqlalchemy (>=2.0.46,<3.0.0)",
     "sshtunnel (>=0.4.0,<0.5.0)",
     "clickhouse-connect (>=0.10.0,<0.11.0)",
-    "psycopg2-binary (>=2.9.11,<3.0.0)"
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "paramiko (<2.12.0)",
 ]
 
 
