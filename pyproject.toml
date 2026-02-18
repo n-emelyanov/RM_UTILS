@@ -1,6 +1,6 @@
 [project]
 name = "rm-utils"
-version = "1.0.2"
+version = "1.0.0"
 description = ""
 authors = [
     {name = "n-emelianov",email = "limbolume2023@gmail.com"}
@@ -34,6 +34,13 @@ dev = [
     "ipykernel (>=7.1.0,<8.0.0)",
     "seaborn (>=0.13.2,<0.14.0)"
 ]
+
+[project.urls]
+Homepage = "https://github.com/n-emelyanov/RM_UTILS"           # Главная страница
+Documentation = "https://github.com/n-emelyanov/RM_UTILS#readme"  # Документация
+Repository = "https://github.com/n-emelyanov/RM_UTILS.git"    # Исходный код
+Changelog = "https://github.com/n-emelyanov/RM_UTILS/blob/master/docs/CHANGELOG.md"  # История изменений
+Issues = "https://github.com/n-emelyanov/RM_UTILS/issues"     # Баг-трекер
 
 [tool.setuptools]
 packages = ["rm_utils"]

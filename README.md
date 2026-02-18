@@ -1,6 +1,6 @@
 # Библиотека утилит для риск-менеджмента ML-моделей
 
-![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)
+![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)
 
 Библиотека разработана для помощи в реализации и мониторинге рисковых ML-моделей в финансовой и других риск-ориентированных областях. Включает инструменты для расчета метрик, анализа стабильности, генерации отчетов и работы с данными.
 
@@ -37,11 +37,11 @@
 
 #### Через Poetry (рекомендуется)
 ```bash
-poetry add git+ssh://git@github.com/n-emelyanov/RM_UTILS.git#v1.0.2
+poetry add rm-utils
 ```
 #### Через PIP
 ```bash
-pip install git+ssh://git@github.com/n-emelyanov/RM_UTILS.git#v1.0.2
+pip install rm-utils
 ```
 
 ### Использование
