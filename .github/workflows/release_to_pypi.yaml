@@ -1,0 +1,57 @@
+name: Release to PyPI
+
+on:
+  release:
+    types: [published]  # Запускается когда создан релиз на GitHub
+  workflow_dispatch:     # Для ручного запуска (опционально)
+    inputs:
+      version_bump:
+        description: 'Тип обновления версии (patch/minor/major)'
+        required: false
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release-to-pypi:
+    name: Build and release to PyPI
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write  # Trusted Publishing
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Полная история для определения версии
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install Poetry
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 -
+          # Добавляем Poetry в PATH
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Configure Poetry # В Githib actions по умолчанию создается виртуальное окружение
+        run: poetry config virtualenvs.create false
+
+      - name: Install dependencies
+        run: poetry install --without dev --no-interaction
+
+      # - name: Run tests # TODO
+        # run: poetry run pytest tests/
+
+      - name: Build package
+        run: poetry build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        # Без repository-url - публикует в настоящий PyPI
