@@ -1,12 +1,12 @@
 name: Publish to TestPyPI
 
 # Запускать при пушах в ветку develop
-  # on:
-  #   push:
-  #     branches: [develop]
-  #     paths-ignore:
-  #       - '**.md'     # Изменения ТОЛЬКО в .md файлах НЕ запустят workflow
-  #       - 'docs/**'   # Изменения ТОЛЬКО в docs/ НЕ запустят workflow
+# on:
+#   push:
+#     branches: [develop]
+#     paths-ignore:
+#       - '**.md'     # Изменения ТОЛЬКО в .md файлах НЕ запустят workflow
+#       - 'docs/**'   # Изменения ТОЛЬКО в docs/ НЕ запустят workflow
 
 
 on:
