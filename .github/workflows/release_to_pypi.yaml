@@ -1,17 +1,9 @@
-name: Publish to TestPyPI
-
-# Запускать при пушах в ветку develop
-# on:
-#   push:
-#     branches: [develop]
-#     paths-ignore:
-#       - '**.md'     # Изменения ТОЛЬКО в .md файлах НЕ запустят workflow
-#       - 'docs/**'   # Изменения ТОЛЬКО в docs/ НЕ запустят workflow
-
+name: Release to PyPI
 
 on:
-  # Ручной запуск через интерфейс GitHub
-  workflow_dispatch:
+  release:
+    types: [published]  # Запускается когда создан релиз на GitHub
+  workflow_dispatch:     # Для ручного запуска (опционально)
     inputs:
       version_bump:
         description: 'Тип обновления версии (patch/minor/major)'
@@ -22,24 +14,20 @@ on:
           - patch
           - minor
           - major
-      run_tests:
-        description: 'Запускать тесты перед публикацией'
-        required: false
-        default: true
-        type: boolean
-
 
 jobs:
-  build-and-publish:
-    name: Build and publish to TestPyPI
+  release-to-pypi:
+    name: Build and release to PyPI
     runs-on: ubuntu-latest
-    environment: testpypi  # Ссылка на окружение, которое создадим в настройках репозитория
+    environment: pypi
     permissions:
-      id-token: write  # Обязательно для Trusted Publishing
+      id-token: write  # Trusted Publishing
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Полная история для определения версии
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -64,8 +52,6 @@ jobs:
       - name: Build package
         run: poetry build
 
-      - name: Publish to TestPyPI
+      - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          repository-url: https://test.pypi.org/legacy/
-          # Пакет будет опубликован с использованием Trusted Publishing
+        # Без repository-url - публикует в настоящий PyPI

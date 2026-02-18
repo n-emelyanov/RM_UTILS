@@ -25,11 +25,11 @@ class ExcelReporter:
 
     Examples
     --------
-    >>>> data = pd.read_csv('data.csv')
-    >>>> writer = ExcelReport('report.xlsx')
-    >>>> writer.add_dataframe(data, sheet_name='Sheet', index=True, row_offset=5, col_offset=2)
-    >>>> writer.add_image('image.jpg', sheet_name='Sheet', row_offset=5, col_offset=7, scale=0.7)
-    >>>> writer.save()
+    >>> data = pd.read_csv('data.csv')
+    >>> writer = ExcelReport('report.xlsx')
+    >>> writer.add_dataframe(data, sheet_name='Sheet', index=True, row_offset=5, col_offset=2)
+    >>> writer.add_image('image.jpg', sheet_name='Sheet', row_offset=5, col_offset=7, scale=0.7)
+    >>> writer.save()
 
     """
 
